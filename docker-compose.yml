@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  mock-api:
+    build: .
+    container_name: mock-api
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"        # Max 1 CPU core
+          memory: 256M       # Max 256 MB RAM
+        reservations:
+          cpus: "0.25"       # Guaranteed minimum CPU
+          memory: 64M        # Guaranteed minimum RAM
+    restart: unless-stopped
